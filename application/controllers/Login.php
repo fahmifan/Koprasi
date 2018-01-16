@@ -5,19 +5,50 @@ class Login extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		//$this->load->model('model_user');
+		$this->load->model('Kopustika');
 		$this->load->library('session');
 	}
 
 	public function index()
 	{
 		if($this->session->userdata('status') === 'login') {
-			redirect(base_url('index.php/login/tampil_data'));
+			redirect(base_url('index.php/login/home'));
 			return;
 		}
 		$this->load->view('login');
 	}
 
+	public function home(){
+		$this->load->view('home');
+	}
+
+	public function user_login() 
+	{
+		$users_user = array(
+			'email' => $this->input->post('email'),
+			'password' => $this->input->post('password')
+		);
+		$result = $this->Kopustika->login($users_user);
+		if( $result->row() == null ) {
+			redirect(base_url('index.php/login'));
+			return;
+		}
+		$sess_user = array(
+			'email' => $result->row('email'),
+			//'npm' => $result->row('npm'),
+			'level' => $result->row('level'),
+			'status' => 'login'
+		);
+		
+		$this->session->set_userdata($sess_user);
+		redirect(base_url('index.php/login/home'));		
+	}
+
+	public function logout() {
+		$this->session->sess_destroy();
+		redirect(base_url('index.php/login'));
+	}
+/*
 	public function daftar() {
 		$this->load->view('form');
 	}
@@ -32,43 +63,17 @@ class Login extends CI_Controller {
 			'jk' => $this->input->post('jk')		
 		);
 		$users_user = array(
-			'username' => $this->input->post('username'),
+			'email' => $this->input->post('email'),
 			'password' => sha1( $this->input->post('password') ),
 			'npm' => $this->input->post('npm')
 		);
 
-		if( $this->model_user->input($user_identitas, $users_user) )
+		if( $this->Kopustika->input($user_identitas, $users_user) )
 		{
 			redirect(base_url('index.php/login'));
 		} else {
 			$this->load->view('login');
 		}
-	}
-	public function user_login() 
-	{
-		$users_user = array(
-			'username' => $this->input->post('username'),
-			'password' => sha1( $this->input->post('password') )
-		);
-		$result = $this->model_user->login($users_user);
-		if( $result->row() == null ) {
-			redirect(base_url('index.php/login'));
-			return;
-		}
-		$sess_user = array(
-			'username' => $result->row('username'),
-			'npm' => $result->row('npm'),
-			'level' => $result->row('level'),
-			'status' => 'login'
-		);
-		
-		$this->session->set_userdata($sess_user);
-		redirect(base_url('index.php/login/tampil_data'));		
-	}
-
-	public function logout() {
-		$this->session->sess_destroy();
-		redirect(base_url('index.php/login'));
 	}
 
 	public function tampil_data()
@@ -78,10 +83,10 @@ class Login extends CI_Controller {
 			return;
 		}
 		else if($this->session->userdata('level') === '1') {
-			$data["mhs"] = $this->model_user->tampilAll();
+			$data["mhs"] = $this->Kopustika->tampilAll();
 		} else {
 			$npm = $this->session->userdata('npm');
-			$data["mhs"] = $this->model_user->tampilByUser($npm);
+			$data["mhs"] = $this->Kopustika->tampilByUser($npm);
 		}
 		$this->load->view('tampil_data', $data);
 	}
@@ -89,8 +94,8 @@ class Login extends CI_Controller {
 	public function edit_data()
 	{
 		$npm = $this->uri->segment(3);
-		$this->load->model('model_user');
-		$data["mhs"] = $this->model_user->pilih($npm);
+		$this->load->model('Kopustika');
+		$data["mhs"] = $this->Kopustika->pilih($npm);
 		$this->load->view('edit', $data);
 	}
 
@@ -101,18 +106,18 @@ class Login extends CI_Controller {
 		$alamat = $this->input->post("alamat");
 		$jk = $this->input->post("jk");
 
-		$this->load->model('model_user');
-		$this->model_user->update($npm, $nama, $alamat, $jk);
+		$this->load->model('Kopustika');
+		$this->Kopustika->update($npm, $nama, $alamat, $jk);
 		redirect(base_url("index.php/login/tampil_data"));
 	}
 
 	public function delete_data()
 	{
 		$npm = $this->uri->segment(3);
-		$this->load->model('model_user');
-		$this->model_user->delete($npm);
+		$this->load->model('Kopustika');
+		$this->Kopustika->delete($npm);
 		redirect(base_url("index.php/login/tampil_data"));
-	}
+	}*/
 }
 
 /* End of file login.php */
