@@ -12,7 +12,7 @@
 <div id="header">
         <table border="0">
             <tr>
-                <td class="col-md-4"><img id="logo" src="<?php echo base_url(); ?>assets/image/lipi.png"></td>
+                <td class="col-md-4"><img id="logo1" src="<?php echo base_url(); ?>assets/image/lipi.png"></td>
                 <td><span id="judul">KOPERASI PEGAWAI PUSAT PENELITIAN INFORMATIKA (KOPUSTIKA)</span>
                     <span style="font-family: 15px">Gedung 20 Lt.3 Kampus LIPI Jl. Sangkuriang Bandung 40135</span>
                     <br>

@@ -1,7 +1,7 @@
 <!DOCTYPE html> 
 <html>
 <head>
-	<title>Thunder Express</title>
+	<title>KOPUSTIKA</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/home.css">
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/responsive.css">
@@ -46,9 +46,9 @@
 		<div class="row">
 			<div class="tracking col-sm-7">
 				<form method="POST" name="tracking-finder">
-					<label>Cari Nomer Anggota</label>
+					<label style="font-size: 20px">Cari Nomer Anggota</label>
 					<br>
-					<input type="text" placeholder="e.g xxxx">
+					<input style="margin-top: : 20px" type="text" placeholder="e.g xxxx">
 					<br>
 					<div id="button">
 							<a href="#resi">Temukan</a>

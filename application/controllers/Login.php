@@ -48,6 +48,13 @@ class Login extends CI_Controller {
 		$this->session->sess_destroy();
 		redirect(base_url('index.php/login'));
 	}
+
+	public function tambahAnggota(){
+		$this->load->view('tambahAnggota');
+	}
+	public function info() {
+		$this->load->view('info');
+	}
 /*
 	public function daftar() {
 		$this->load->view('form');
