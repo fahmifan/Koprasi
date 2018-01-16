@@ -5,7 +5,7 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/bootstrap.min.css"> 
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/login.css">
 </head>
-<body style="background-color: blue">
+<body style="background-color: #6d95ED">
 
 <div class="container" > 
 
