@@ -15,6 +15,8 @@
                 <td class="col-md-4"><img id="logo" src="<?php echo base_url(); ?>assets/image/lipi.png"></td>
                 <td><span id="judul">KOPERASI PEGAWAI PUSAT PENELITIAN INFORMATIKA (KOPUSTIKA)</span>
                     <span style="font-family: 15px">Gedung 20 Lt.3 Kampus LIPI Jl. Sangkuriang Bandung 40135</span>
+                    <br>
+                    <span style="font-family: 15px">Telp/Fax : 022-70712445/2504712 ; email :kopustika@gmail.com</span>
                 </td>
 
             </tr>

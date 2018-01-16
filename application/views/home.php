@@ -44,7 +44,7 @@
 
 	<div class="container">
 		<div class="row">
-			<div class="tracking col-sm-6">
+			<div class="tracking col-sm-7">
 				<form method="POST" name="tracking-finder">
 					<label>Cari Nomer Anggota</label>
 					<br>
@@ -56,13 +56,15 @@
 			</form>
 			</div>
 			
-					<div style="padding-top:30px" class"fromto col-sm-6">
+					<div style="padding-top:30px" class"fromto col-sm-5">
 						<div id="button">
-						<a href="#resi">Tambah Anggota Baru</a>
+							<a href="#resi">Tambah Anggota Baru</a>
+	
 
-					
-
+						</div>
 					</div>
+		</div>
+	</div>
 
 					
 </body>
