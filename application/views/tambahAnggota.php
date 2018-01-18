@@ -20,8 +20,8 @@
 			<nav class="site-nav">
 				<ul>
 					<!--<li><font color="yellow">Home</font></li>-->
-					<li class="active-link">Home</li>
-					<li><a href="<?php echo base_url()."index.php/login/Data" ?>">Data Anggota Koperasi</a></li>
+					<li><a href="<?php echo base_url()."index.php/login/home" ?>">Home</a></li>
+					<li><a href="<?php echo base_url()."index.php/login/data" ?>">Data Anggota Koperasi</a></li>
 					<li><a href="<?php echo base_url()."index.php/login/logout" ?>">Log out</a></li>
 				
 				</ul>
@@ -29,7 +29,7 @@
 		</div>
     </header>
     
-    <form action="" method="post">
+    <form method="POST" name="sender-info" action="<?php echo base_url('index.php/login/tambahData')?>">
  <h2><i class="fa fa-user"></i>Form Pendaftaran</h2>
  <br/>
  <div class="form-group">
@@ -51,9 +51,19 @@
  <br/>
  <div class="form-group form-cek">
 
- <div class="form-group">
-  <button class="btn btn-submit" type="submit">Daftar &nbsp; <i class="fa fa-hand-o-right" aria-hidden="true"></i></button>
+ <!-- <div class="form-group">
+  <button class="btn btn-submit" type="submit">
+  	<a href="<?php //echo base_url()."index.php/login/info" ?>" style="text-decoration: none; color: white" >Daftar</a>
+  </button>
+ </div> -->
+
+ <div class="form-group from-cek">
+ 	<div id="button">
+ 		<input style="color: white; background-color: #6d95ED; font-family: helvetica; text-transform: none; border-radius: 8px;" type="submit" name="tambah" value="Daftar" class="button">
+ 	</div>
+ 	
  </div>
  <br/>
 
- </form>
+ </body>
+ </html>

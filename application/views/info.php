@@ -20,15 +20,25 @@
 			<nav class="site-nav">
 				<ul>
 					<!--<li><font color="yellow">Home</font></li>-->
-					<li class="active-link">Home</li>
-					<li><a href="<?php echo base_url()."index.php/login/Data" ?>">Data Anggota Koperasi</a></li>
+					<li><a href="<?php echo base_url()."index.php/login/home" ?>">Home</a></li>
+					<li><a href="<?php echo base_url()."index.php/login/data" ?>">Data Anggota Koperasi</a></li>
 					<li><a href="<?php echo base_url()."index.php/login/logout" ?>">Logout</a></li>
 				</ul>
 			</nav>
 		</div>
 	</header>
+	
 
 	<div class="container">
+	<!-- <div>
+	<ul class="header">
+		<li class="dropdown" style="float:right; font-family:arial; font-size:20px;background-color: #dcdcdc; border-radius:8px;list-style-type:none;">
+				<?php //echo $anggota->nama_anggota?>
+					<div class="dropdown-content" style="font-family:arial; font-size:8px;background-color: #dcdcdc;border-radius:8px; list-style-type:none;">
+					<a href="<?php //echo base_url()."index.php/login/destroy" ?>">Logout</a></div>
+			</li>
+			</ul>
+		</div> -->
 		<h1>INFORMASI ANGGOTA</h1>
 		<div class="row">
 			<div class="sender-info col-sm-6">
@@ -58,6 +68,10 @@
 							<td><span>Alamat</span></td>
 							<td><span>: <?php  ?></span></td>
 						</tr>
+						<tr>
+							<td><span>Sisa Pokok Pinjaman Sebelumnya</span></td>
+							<td><span>: <?php  ?></span></td>
+						</tr>
 					</table>
 				</form>
 
@@ -65,7 +79,7 @@
 					<tr>
 						<td>
 							<div id="button" class="col-sm-2">
-								<a href="">Kembali</a>
+								<a href="">Print</a>
 							</div>
 						</td>
 						<td>

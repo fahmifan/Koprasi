@@ -12,11 +12,12 @@ class Kopustika extends CI_Model {
 		);
 		return $result;
 	}
-	/*
-	public function input($identitas, $users)
+
+	
+	public function input($identitas)
 	{
 
-		if( $this->db->insert('identitas', $identitas) && $this->db->insert('users', $users) )
+		if( $this->db->insert('anggota', $identitas))
 		{
 			return TRUE;
 		} else {
@@ -24,6 +25,26 @@ class Kopustika extends CI_Model {
 		}
 	}
 
+	public function tampilAll()
+	{
+		$query = $this->db->get('anggota');
+		return $query;
+	}
+
+	public function ambilNama($no_anggota) {
+		$nama_anggota = $this->db->select('nama_anggota')
+								 ->where('no_anggota',$no_anggota)
+								 ->get('anggota');
+		return $nama_anggota->row();
+	}
+
+	public function tampilByUser($no_anggota){
+		$query = $this->db->get_where('anggota', array('no_anggota' => $no_anggota));
+		return $query;
+	}
+}
+
+/*
 	public function tampilAll()
 	{
 		$query = $this->db->get('identitas');
@@ -58,7 +79,6 @@ class Kopustika extends CI_Model {
 	{
 		$this->db->delete('identitas', array('npm' => $npm));
 	}*/
-}
 
 /* End of file model_user.php */
 /* Location: ./application/models/model_user.php */

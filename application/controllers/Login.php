@@ -35,7 +35,6 @@ class Login extends CI_Controller {
 		}
 		$sess_user = array(
 			'email' => $result->row('email'),
-			//'npm' => $result->row('npm'),
 			'level' => $result->row('level'),
 			'status' => 'login'
 		);
@@ -52,10 +51,88 @@ class Login extends CI_Controller {
 	public function tambahAnggota(){
 		$this->load->view('tambahAnggota');
 	}
+
+	public function tambahData() {
+		$identitas = array(
+			'nama_anggota' => $this->input->post('nama_anggota'),
+			'no_hp' => $this->input->post('no_hp'),
+			'bank' => $this->input->post('bank'),
+			'no_rek' => $this->input->post('no_rek'),
+			'alamat' => $this->input->post('alamat')
+			);
+		// $this->session->set_userdata($identitas);
+		if( $this->Kopustika->input($identitas)==TRUE)
+		{
+			redirect(base_url('index.php/login/info'));
+		} else {
+			$this->load->view('tambahAnggota');
+		}
+	}
+
 	public function info() {
 		$this->load->view('info');
 	}
+
+	public function data() {
+		// $this->load->view('data');
+		if($this->session->userdata('status') !== 'login') {
+			redirect(base_url('index.php/login/'));
+			return;
+		}
+		$data["koperasi"] = $this->Kopustika->tampilAll();
+		$this->load->view('data', $data);
+	}
+
+	public function peminjaman(){
+		$this->load->view('peminjaman');
+	}
+
+	public function tagihan() {
+		$this->load->view('tagihan');
+	}
+
+	public function cari() {
+			$no_anggota = $this->input->post('no_anggota');
+		
+		// $no_anggota = $this->input->post('no_anggota');
+		// $nama_anggota = $this->Kopustika->ambilNama($no_anggota);
+		// $this->session->set_userdata($temukan);
+		// var_dump($nama_anggota);
+		// // echo $this->session->userdata('nama_anggota');
+		// die();
+
+		redirect(base_url('index.php/login/info?no_anggota=' . $no_anggota));
+	}
+
+	public function destroy(){
+		// $this->load->model('Kopustika');
+		// $identitas = $this->session->userdata($identitas);
+		// $temukan = $this->session->userdata($temukan);
+		$this->session->unset_userdata($identitas);
+		$this->session->unset_userdata($temukan);
+		// var_dump($identitas); 
+		// 	echo "</pre>";
+		// 	die();
+		redirect(base_url('index.php/login'));
+	}
+}
 /*
+
+	public function tampil_data()
+	{
+		if($this->session->userdata('status') !== 'login') {
+			redirect(base_url('index.php/login/'));
+			return;
+		}
+		else if($this->session->userdata('level') === '1') {
+			$data["mhs"] = $this->Kopustika->tampilAll();
+		} else {
+			$npm = $this->session->userdata('npm');
+			$data["mhs"] = $this->Kopustika->tampilByUser($npm);
+		}
+		$this->load->view('tampil_data', $data);
+	}
+
 	public function daftar() {
 		$this->load->view('form');
 	}
@@ -81,21 +158,6 @@ class Login extends CI_Controller {
 		} else {
 			$this->load->view('login');
 		}
-	}
-
-	public function tampil_data()
-	{
-		if($this->session->userdata('status') !== 'login') {
-			redirect(base_url('index.php/login/'));
-			return;
-		}
-		else if($this->session->userdata('level') === '1') {
-			$data["mhs"] = $this->Kopustika->tampilAll();
-		} else {
-			$npm = $this->session->userdata('npm');
-			$data["mhs"] = $this->Kopustika->tampilByUser($npm);
-		}
-		$this->load->view('tampil_data', $data);
 	}
 
 	public function edit_data()
@@ -125,7 +187,5 @@ class Login extends CI_Controller {
 		$this->Kopustika->delete($npm);
 		redirect(base_url("index.php/login/tampil_data"));
 	}*/
-}
-
 /* End of file login.php */
 /* Location: ./application/controllers/login.php */

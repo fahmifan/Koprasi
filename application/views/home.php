@@ -12,7 +12,7 @@
 </head>
 
 <body>
-	<header>
+	<header style="font-family: helvetica">
 		<div class="navbar">
 			<img id="logo" src="<?php echo base_url(); ?>assets/image/lipi.png">
 			<img class="menu-toggle" src="<?php echo base_url(); ?>assets/image/toggle.png" width="10vw" >
@@ -21,7 +21,7 @@
 				<ul>
 					<!--<li><font color="yellow">Home</font></li>-->
 					<li class="active-link">Home</li>
-					<li><a href="<?php echo base_url()."index.php/login/Data" ?>">Data Anggota Koperasi</a></li>
+					<li><a href="<?php echo base_url()."index.php/login/data" ?>">Data Anggota Koperasi</a></li>
 					<li><a href="<?php echo base_url()."index.php/login/logout" ?>">Log out</a></li>
 					
 					
@@ -45,20 +45,21 @@
 	<div class="container">
 		<div class="row">
 			<div class="tracking col-sm-7">
-				<form method="POST" name="tracking-finder">
+				<form method="POST" name="tracking-finder" action="<?php echo base_url('index.php/login/cari'); ?>">
 					<label style="font-size: 20px">Cari Nomer Anggota</label>
 					<br>
-					<input style="margin-top: : 20px" type="text" placeholder="e.g xxxx">
+					<input style="margin-top: : 20px" type="text" placeholder="e.g xxxx" name="no_anggota">
 					<br>
 					<div id="button">
-							<a href="#resi">Temukan</a>
+							<input style="color: black; font-family: helvetica; text-transform: none; border-radius: 12px; font-weight: normal;" type="submit" name="temukan" value="Temukan" class="button">
+							<!-- <a href="<?php echo base_url()."index.php/login/info" ?>">Temukan</a> -->
 					</div>
 			</form>
 			</div>
 			
 					<div style="padding-top:30px" class"fromto col-sm-5">
 						<div id="button">
-							<a href="#resi">Tambah Anggota Baru</a>
+							<a href="<?php echo base_url()."index.php/login/tambahAnggota" ?>">Tambah Anggota Baru</a>
 	
 
 						</div>
